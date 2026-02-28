@@ -1,0 +1,190 @@
+{
+  "header": {
+    "logo": "ポートフォリオ",
+    "about": "について",
+    "work": "実績",
+    "services": "サービス",
+    "contact": "お問い合わせ",
+    "themeLight": "ライト",
+    "themeDark": "ダーク"
+  },
+  "hero": {
+    "badge": "デザイン & 開発",
+    "headline1": "デジタル体験を",
+    "headline2": "創造する",
+    "subtitle": "モダンなウェブサイト、AI製品、カスタム機能で、ビジネスの成長をサポートします。",
+    "cta": "実績を見る"
+  },
+  "about": {
+    "title": "について",
+    "content": "About セクションの内容です。"
+  },
+  "services": {
+    "overline": "サービス",
+    "title": "提供内容",
+    "subtitle": "現代のビジネス向けソリューション",
+    "website": {
+      "title": "ウェブサイト開発",
+      "description": "モダンなフレームワークでフルスタックWebアプリを構築。ランディングページから複雑なWebプラットフォームまで、高速でレスポンシブ、スケーラブルなソリューションを提供します。",
+      "tags": "React, Next.js, TypeScript, Tailwind"
+    },
+    "ai": {
+      "title": "AI製品",
+      "description": "ユーザー体験を高めるカスタムチャットボットやAI連携。最新の言語モデルとAI技術でインテリジェントな機能を実装します。",
+      "tags": "OpenAI, LangChain, RAG, APIs"
+    },
+    "feature": {
+      "title": "機能拡張",
+      "description": "既存サイトに新機能を追加。認証、決済、分析、カスタム機能など、幅広く対応します。",
+      "tags": "Stripe, Auth, Analytics, APIs"
+    }
+  },
+  "techStack": {
+    "title": "使用技術"
+  },
+  "codeShowcase": {
+    "overline": "コード",
+    "title": "How I Code",
+    "subtitle": "クリーンで効率的、保守しやすいコード",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "copyLabel": "コードをコピー"
+  },
+  "testimonials": {
+    "overline": "お客様の声",
+    "title": "What Clients Say",
+    "subtitle": "一緒に仕事をした方々からのコメント",
+    "prevLabel": "前の testimonial",
+    "nextLabel": "次の testimonial",
+    "goToLabel": "Testimonial {index} へ",
+    "items": {
+      "1": {
+        "quote": "一緒に働けて本当に良かったです。ウェブサイトはデザインもパフォーマンスも期待を超えました。強くおすすめします。",
+        "name": "Sarah Chen",
+        "role": "プロダクトマネージャー",
+        "company": "TechCorp",
+        "initial": "S"
+      },
+      "2": {
+        "quote": "AIチャットボットの導入でカスタマーサポートが一変しました。対応時間は60%短縮し、顧客満足度も大きく向上しました。",
+        "name": "Michael Rodriguez",
+        "role": "CEO",
+        "company": "StartupXYZ",
+        "initial": "M"
+      },
+      "3": {
+        "quote": "プロフェッショナルで、レスポンスが早く、技術的にも優れていました。必要なものを期日と予算内で正確に届けてくれました。",
+        "name": "Emily Watson",
+        "role": "マーケティングディレクター",
+        "company": "Digital Agency",
+        "initial": "E"
+      },
+      "4": {
+        "quote": "コンセプトからローンチまで、プロセスはスムーズで協力的でした。ユーザーに愛されるモダンで高速なサイトが完成しました。",
+        "name": "James Kim",
+        "role": "創業者",
+        "company": "SaaS Co",
+        "initial": "J"
+      }
+    }
+  },
+  "projects": {
+    "overline": "ポートフォリオ",
+    "title": "Featured Work",
+    "subtitle": "スキルを紹介する最近のプロジェクト",
+    "filterLabel": "カテゴリでフィルター",
+    "filterAll": "すべて",
+    "filterWebsites": "ウェブサイト",
+    "filterAI": "AI製品",
+    "filterFeatures": "機能",
+    "viewProject": "プロジェクトを見る",
+    "categoryWebsite": "Website",
+    "categoryAI": "AI",
+    "categoryFeature": "Feature",
+    "items": {
+      "1": {
+        "title": "Eコマースプラットフォーム",
+        "description": "カート、チェックアウト、在庫管理を備えたフルスタックのオンラインストア。",
+        "tags": "Next.js, Stripe, PostgreSQL"
+      },
+      "2": {
+        "title": "デザイナーポートフォリオ",
+        "description": "ケーススタディとお問い合わせフォーム付きのミニマルなポートフォリオサイト。",
+        "tags": "React, Tailwind, Framer Motion"
+      },
+      "3": {
+        "title": "サポートチャットボット",
+        "description": "RAGとチケット引き継ぎを備えたAIカスタマーサポートボット。",
+        "tags": "OpenAI, LangChain, Next.js"
+      },
+      "4": {
+        "title": "コンテンツ執筆アシスタント",
+        "description": "LLMでチームの文案作成・推敲を支援するツール。",
+        "tags": "GPT-4, RAG, TypeScript"
+      },
+      "5": {
+        "title": "決済連携",
+        "description": "既存SaaS向けのStripeチェックアウトとサブスクリプション課金。",
+        "tags": "Stripe, Webhooks, React"
+      },
+      "6": {
+        "title": "分析ダッシュボード",
+        "description": "チャートとエクスポート付きのリアルタイムメトリクス・レポート。",
+        "tags": "Chart.js, API, Next.js"
+      }
+    }
+  },
+  "contact": {
+    "overline": "一緒に働きませんか",
+    "title": "プロジェクトのご相談",
+    "subtitle": "フリーランスおよび新しい案件のご依頼を受け付けております。",
+    "ctaPrimary": "お問い合わせ",
+    "ctaSecondary": "履歴書を見る",
+    "socialLabel": "SNS"
+  },
+  "contactForm": {
+    "formLabel": "お問い合わせフォーム",
+    "name": "名前",
+    "namePlaceholder": "お名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@example.com",
+    "message": "メッセージ",
+    "messagePlaceholder": "メッセージを入力...",
+    "submit": "送信",
+    "sending": "送信中...",
+    "success": "送信しました。ありがとうございます。",
+    "error": "送信に失敗しました。もう一度お試しください。",
+    "validationNameRequired": "名前を入力してください",
+    "validationEmailRequired": "メールアドレスを入力してください",
+    "validationEmailInvalid": "有効なメールアドレスを入力してください",
+    "validationMessageRequired": "メッセージを入力してください"
+  },
+  "footer": {
+    "copyright": "© 2026 Your Name",
+    "builtWith": "Built with Next.js & Tailwind"
+  },
+  "commandPalette": {
+    "placeholder": "検索...",
+    "nav": {
+      "home": "ホーム",
+      "about": "について",
+      "work": "実績",
+      "projects": "プロジェクト",
+      "services": "サービス",
+      "contact": "お問い合わせ"
+    },
+    "groups": {
+      "navigation": "ナビゲーション",
+      "projects": "プロジェクト",
+      "actions": "アクション"
+    },
+    "actions": {
+      "toggleDark": "ダークモード切替",
+      "switchEn": "English に切替",
+      "switchJa": "日本語に切替",
+      "copyEmail": "メールをコピー"
+    },
+    "shortcut": "⌘K",
+    "shortcutEsc": "ESC"
+  }
+}

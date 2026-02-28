@@ -1,0 +1,190 @@
+{
+  "header": {
+    "logo": "Portfolio",
+    "about": "About",
+    "work": "Work",
+    "services": "Services",
+    "contact": "Contact",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "hero": {
+    "badge": "Design & Development",
+    "headline1": "Building Digital",
+    "headline2": "Experiences",
+    "subtitle": "I create modern websites, AI-powered products, and custom features that help businesses grow.",
+    "cta": "View My Work"
+  },
+  "about": {
+    "title": "About",
+    "content": "About section content."
+  },
+  "services": {
+    "overline": "Services",
+    "title": "What I Build",
+    "subtitle": "Specialized solutions for modern businesses",
+    "website": {
+      "title": "Website Development",
+      "description": "Full-stack web applications built with modern frameworks. From landing pages to complex web platforms, I create fast, responsive, and scalable solutions.",
+      "tags": "React, Next.js, TypeScript, Tailwind"
+    },
+    "ai": {
+      "title": "AI-Powered Products",
+      "description": "Custom chatbots and AI integrations that enhance user experience. Implement intelligent features using the latest language models and AI technologies.",
+      "tags": "OpenAI, LangChain, RAG, APIs"
+    },
+    "feature": {
+      "title": "Feature Enhancement",
+      "description": "Add new capabilities to your existing websites. Whether it's authentication, payments, analytics, or custom functionality - I've got you covered.",
+      "tags": "Stripe, Auth, Analytics, APIs"
+    }
+  },
+  "techStack": {
+    "title": "Technologies I Use"
+  },
+  "codeShowcase": {
+    "overline": "Code",
+    "title": "How I Code",
+    "subtitle": "Clean, efficient, and maintainable",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copyLabel": "Copy code"
+  },
+  "testimonials": {
+    "overline": "Testimonials",
+    "title": "What Clients Say",
+    "subtitle": "Kind words from people I've worked with",
+    "prevLabel": "Previous testimonial",
+    "nextLabel": "Next testimonial",
+    "goToLabel": "Go to testimonial {index}",
+    "items": {
+      "1": {
+        "quote": "Working with them was exceptional. The website exceeded our expectations in both design and performance. Highly recommended!",
+        "name": "Sarah Chen",
+        "role": "Product Manager",
+        "company": "TechCorp",
+        "initial": "S"
+      },
+      "2": {
+        "quote": "The AI chatbot integration transformed our customer service. Response times dropped by 60% and customer satisfaction increased significantly.",
+        "name": "Michael Rodriguez",
+        "role": "CEO",
+        "company": "StartupXYZ",
+        "initial": "M"
+      },
+      "3": {
+        "quote": "Professional, responsive, and technically excellent. They delivered exactly what we needed, on time and within budget.",
+        "name": "Emily Watson",
+        "role": "Marketing Director",
+        "company": "Digital Agency",
+        "initial": "E"
+      },
+      "4": {
+        "quote": "From concept to launch, the process was smooth and collaborative. The result was a modern, fast site that our users love.",
+        "name": "James Kim",
+        "role": "Founder",
+        "company": "SaaS Co",
+        "initial": "J"
+      }
+    }
+  },
+  "projects": {
+    "overline": "Portfolio",
+    "title": "Featured Work",
+    "subtitle": "Recent projects that showcase my skills",
+    "filterLabel": "Filter projects by category",
+    "filterAll": "All",
+    "filterWebsites": "Websites",
+    "filterAI": "AI Products",
+    "filterFeatures": "Features",
+    "viewProject": "View Project",
+    "categoryWebsite": "Website",
+    "categoryAI": "AI",
+    "categoryFeature": "Feature",
+    "items": {
+      "1": {
+        "title": "E-Commerce Platform",
+        "description": "Full-stack online store with cart, checkout, and inventory management.",
+        "tags": "Next.js, Stripe, PostgreSQL"
+      },
+      "2": {
+        "title": "Designer Portfolio",
+        "description": "Minimal portfolio site with case studies and contact form.",
+        "tags": "React, Tailwind, Framer Motion"
+      },
+      "3": {
+        "title": "Support Chatbot",
+        "description": "AI-powered customer support bot with RAG and ticket handoff.",
+        "tags": "OpenAI, LangChain, Next.js"
+      },
+      "4": {
+        "title": "Content Writing Assistant",
+        "description": "Tool that helps teams draft and refine copy using LLMs.",
+        "tags": "GPT-4, RAG, TypeScript"
+      },
+      "5": {
+        "title": "Payment Integration",
+        "description": "Stripe checkout and subscription billing for an existing SaaS.",
+        "tags": "Stripe, Webhooks, React"
+      },
+      "6": {
+        "title": "Analytics Dashboard",
+        "description": "Real-time metrics and reporting with charts and exports.",
+        "tags": "Chart.js, API, Next.js"
+      }
+    }
+  },
+  "contact": {
+    "overline": "Let's Work Together",
+    "title": "Have a project in mind?",
+    "subtitle": "I'm currently available for freelance work and new opportunities.",
+    "ctaPrimary": "Get in Touch",
+    "ctaSecondary": "View Resume",
+    "socialLabel": "or find me on"
+  },
+  "contactForm": {
+    "formLabel": "Contact form",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success": "Thanks! Your message was sent.",
+    "error": "Something went wrong. Please try again.",
+    "validationNameRequired": "Name is required",
+    "validationEmailRequired": "Email is required",
+    "validationEmailInvalid": "Please enter a valid email",
+    "validationMessageRequired": "Message is required"
+  },
+  "footer": {
+    "copyright": "© 2026 Your Name",
+    "builtWith": "Built with Next.js & Tailwind"
+  },
+  "commandPalette": {
+    "placeholder": "Search...",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "work": "Work",
+      "projects": "Projects",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "groups": {
+      "navigation": "Navigation",
+      "projects": "Projects",
+      "actions": "Actions"
+    },
+    "actions": {
+      "toggleDark": "Toggle Dark Mode",
+      "switchEn": "Switch to English",
+      "switchJa": "Switch to Japanese",
+      "copyEmail": "Copy Email"
+    },
+    "shortcut": "⌘K",
+    "shortcutEsc": "ESC"
+  }
+}
