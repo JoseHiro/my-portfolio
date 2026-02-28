@@ -60,11 +60,6 @@ def process_embeddings(documents: List[str]):
   },
 ] as const;
 
-const tabTransition = {
-  duration: 0.2,
-  ease: "easeInOut",
-};
-
 export function CodeShowcase() {
   const t = useTranslations("codeShowcase");
   const [activeId, setActiveId] = useState<(typeof SNIPPETS)[number]["id"]>("api-route");
@@ -173,7 +168,7 @@ export function CodeShowcase() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={tabTransition}
+                  transition={{ duration: 0.2, ease: [0.42, 0, 0.58, 1] }}
                   className="min-w-0"
                 >
                   <SyntaxHighlighter
