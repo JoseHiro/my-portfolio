@@ -82,7 +82,7 @@ function TechCard({
   name,
   isMobile,
 }: {
-  Icon: (props: { className?: string; size?: number }) => React.ReactElement;
+  Icon: React.ComponentType<{ className?: string; size?: number }>;
   name: string;
   isMobile: boolean;
 }) {

@@ -173,20 +173,19 @@ function Orb({
         width: size,
         height: size,
         ...positionStyle,
-        ...(isPointerFine
-          ? { x: motionStyle.x, y: motionStyle.y }
-          : {
-              animate: {
-                x: [0, 12, -8, 0],
-                y: [0, -10, 6, 0],
-              },
-              transition: {
-                duration: 22,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
-            }),
+        ...(isPointerFine ? { x: motionStyle.x, y: motionStyle.y } : {}),
       }}
+      {...(!isPointerFine && {
+        animate: {
+          x: [0, 12, -8, 0],
+          y: [0, -10, 6, 0],
+        },
+        transition: {
+          duration: 22,
+          repeat: Infinity,
+          ease: "easeInOut" as const,
+        },
+      })}
     >
       <div
         className={cn("w-full h-full rounded-full dark:hidden transition-opacity duration-300")}

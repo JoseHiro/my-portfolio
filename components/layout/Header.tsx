@@ -146,7 +146,7 @@ export function Header() {
           height: mobileOpen ? "auto" : 0,
           opacity: mobileOpen ? 1 : 0,
         }}
-        transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         className="absolute left-0 right-0 top-full z-50 overflow-hidden md:hidden border-b border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg"
       >
         <div className="flex flex-col px-6 py-4 gap-1">

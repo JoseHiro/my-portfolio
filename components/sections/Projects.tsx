@@ -84,7 +84,7 @@ function BentoCard({
               transition: {
                 duration: 0.4,
                 delay: index * 0.06,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                ease: [0.25, 0.46, 0.45, 0.94] as const,
               },
             }
           : { opacity: 0, y: 24 }

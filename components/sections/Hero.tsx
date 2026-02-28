@@ -27,7 +27,7 @@ const item = {
     transition: {
       duration: 0.5,
       delay: i * 0.1,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   }),
 };
@@ -198,7 +198,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         className="relative z-10 order-1 lg:order-2 flex items-center justify-center"
       >
         <GradientOrb />
