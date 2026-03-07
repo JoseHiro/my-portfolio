@@ -1,208 +1,109 @@
 "use client";
 
-import { useRef, useCallback } from "react";
-import { useTranslations } from "next-intl";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef, useEffect, useState, useMemo } from "react";
+import { motion, useAnimation, useScroll, motionValue } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { HeroBackground } from "@/components/sections/HeroBackground";
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0,
-    },
-  },
-};
+const IMAGE_COUNT = 6;
+const BOX_SIZE = 150;
+const GAP = 12;
 
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: i * 0.1,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  }),
-};
+function getSpreadX(index: number) {
+  const totalWidth = IMAGE_COUNT * BOX_SIZE + (IMAGE_COUNT - 1) * GAP;
+  const start = -totalWidth / 2 + BOX_SIZE / 2;
+  return start + index * (BOX_SIZE + GAP);
+}
 
-function GradientOrb() {
-  const ref = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150 };
-  const x = useSpring(useTransform(mouseX, [-0.5, 0.5], [-12, 12]), springConfig);
-  const y = useSpring(useTransform(mouseY, [-0.5, 0.5], [-12, 12]), springConfig);
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = (e.clientX - centerX) / rect.width;
-      const deltaY = (e.clientY - centerY) / rect.height;
-      mouseX.set(deltaX);
-      mouseY.set(deltaY);
-    },
-    [mouseX, mouseY]
+function ImageStack({ heroRef }: { heroRef: React.RefObject<HTMLElement | null> }) {
+  const controls = useAnimation();
+  const [animDone, setAnimDone] = useState(false);
+  const xMvs = useMemo(
+    () => Array.from({ length: IMAGE_COUNT }, () => motionValue(0)),
+    []
   );
 
-  const handleMouseLeave = useCallback(() => {
-    mouseX.set(0);
-    mouseY.set(0);
-  }, [mouseX, mouseY]);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  useEffect(() => {
+    async function sequence() {
+      // Phase 1: all rise up together (stacked)
+      await controls.start({
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      });
+      // Phase 2: spread out to sides
+      await controls.start((i: number) => ({
+        x: getSpreadX(i),
+        transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+      }));
+      // Switch to scroll-driven mode
+      xMvs.forEach((mv, i) => mv.set(getSpreadX(i)));
+      setAnimDone(true);
+    }
+    const timer = setTimeout(sequence, 900);
+    return () => clearTimeout(timer);
+  }, [controls, xMvs]);
+
+  // Collapse on scroll as hero exits viewport
+  useEffect(() => {
+    if (!animDone) return;
+    return scrollYProgress.on("change", (v) => {
+      const collapse = 1 - Math.max(0, Math.min(1, (v - 0.3) / 0.5));
+      xMvs.forEach((mv, i) => mv.set(getSpreadX(i) * collapse));
+    });
+  }, [animDone, scrollYProgress, xMvs]);
 
   return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative flex items-center justify-center w-full min-h-[280px] md:min-h-[400px] lg:min-h-0"
-    >
-      <motion.div
-        style={{ x, y }}
-        className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full select-none pointer-events-none"
-        aria-hidden
-      >
-        {/* Outer blur layer */}
-        <div
-          className={cn(
-            "absolute inset-0 rounded-full opacity-40",
-            "bg-gradient-to-br from-blue-400 via-indigo-400 to-blue-600",
-            "dark:from-blue-500 dark:via-indigo-500 dark:to-blue-700",
-            "blur-3xl"
-          )}
-        />
-        {/* Middle glow */}
-        <div
-          className={cn(
-            "absolute inset-2 rounded-full opacity-60",
-            "bg-gradient-to-br from-blue-300 via-indigo-300 to-blue-500",
-            "dark:from-blue-400 dark:via-indigo-400 dark:to-blue-600",
-            "blur-xl"
-          )}
-        />
-        {/* Core orb with pulse */}
-        <motion.div
-          animate={{
-            scale: [1, 1.08, 1],
-            opacity: [0.85, 0.95, 0.85],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className={cn(
-            "absolute inset-4 md:inset-6 rounded-full",
-            "bg-gradient-to-br from-blue-400 via-indigo-400 to-blue-600",
-            "dark:from-blue-500 dark:via-indigo-500 dark:to-blue-700",
-            "blur-md"
-          )}
-        />
-        {/* Inner highlight */}
-        <div
-          className={cn(
-            "absolute inset-6 md:inset-10 rounded-full",
-            "bg-gradient-to-tr from-white/30 to-transparent",
-            "dark:from-white/20"
-          )}
-        />
-      </motion.div>
+    <div className="relative flex justify-center mt-12" style={{ height: BOX_SIZE }}>
+      {Array.from({ length: IMAGE_COUNT }).map((_, i) =>
+        animDone ? (
+          <motion.div
+            key={i}
+            style={{ x: xMvs[i], width: BOX_SIZE, height: BOX_SIZE }}
+            className="absolute rounded-xl bg-gray-200 dark:bg-gray-700"
+          />
+        ) : (
+          <motion.div
+            key={i}
+            custom={i}
+            animate={controls}
+            initial={{ y: 60, x: 0, opacity: 0 }}
+            style={{ width: BOX_SIZE, height: BOX_SIZE }}
+            className="absolute rounded-xl bg-gray-200 dark:bg-gray-700"
+          />
+        )
+      )}
     </div>
   );
 }
 
 export function Hero() {
-  const t = useTranslations("hero");
+  const heroRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={heroRef}
       aria-label="Hero"
       className={cn(
-        "relative min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8",
-        "items-center py-20 px-6 md:px-12 overflow-hidden",
+        "relative min-h-screen flex flex-col items-center justify-center overflow-hidden",
         "bg-white dark:bg-slate-900"
       )}
     >
-      <HeroBackground />
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 flex flex-col justify-center order-2 lg:order-1"
+      <motion.h1
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="text-5xl md:text-7xl lg:text-8xl font-bold text-center text-black dark:text-white px-6"
       >
-        <motion.span
-          custom={0}
-          variants={item}
-          className={cn(
-            "inline-flex text-xs font-medium px-3 py-1 rounded-full w-fit",
-            "bg-blue-50 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400"
-          )}
-        >
-          {t("badge")}
-        </motion.span>
+        This is my art work.
+      </motion.h1>
 
-        <motion.h1
-          custom={1}
-          variants={item}
-          className={cn(
-            "mt-4 text-5xl md:text-7xl font-bold leading-tight gradient-text-hover",
-            "bg-gradient-to-r from-black via-gray-700 to-gray-600 dark:from-white dark:via-gray-300 dark:to-gray-400 bg-clip-text text-transparent"
-          )}
-        >
-          <span className="block">{t("headline1")}</span>
-          <span className="block">{t("headline2")}</span>
-        </motion.h1>
-
-        <motion.p
-          custom={2}
-          variants={item}
-          className={cn(
-            "mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-xl"
-          )}
-        >
-          {t("subtitle")}
-        </motion.p>
-
-        <motion.div custom={3} variants={item} className="mt-8">
-          <MagneticButton>
-            <a
-              href="#work"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={cn(
-                "inline-flex items-center justify-center min-h-[44px] h-10 px-6 text-sm font-medium rounded-lg",
-                "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500",
-                "text-white shadow-md hover:shadow-lg hover:-translate-y-0.5",
-                "focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900",
-                "transition-all duration-150 ease-out"
-              )}
-              aria-label={t("cta")}
-            >
-              {t("cta")}
-            </a>
-          </MagneticButton>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-        className="relative z-10 order-1 lg:order-2 flex items-center justify-center"
-      >
-        <GradientOrb />
-      </motion.div>
+      <ImageStack heroRef={heroRef} />
 
       <motion.a
         href="#about"
@@ -212,8 +113,8 @@ export function Hero() {
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.4 }}
-        className="relative z-10 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:rounded-full focus-visible:outline-none transition-colors"
+        transition={{ delay: 1.8, duration: 0.4 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white focus-visible:outline-none transition-colors"
         aria-label="Scroll to content"
       >
         <span className="text-xs font-medium">Scroll</span>

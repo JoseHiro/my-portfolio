@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { Container, Section, Heading } from "@/components/ui";
-import { Hero } from "@/components/sections/Hero";
+import { ScrollSequence } from "@/components/sections/ScrollSequence";
 import { SectionSkeleton } from "@/components/ui/SectionSkeleton";
 import { getTranslations } from "next-intl/server";
 import { getBlurDataUrls } from "@/lib/getBlurDataUrl";
@@ -42,7 +42,7 @@ export default async function HomePage() {
   const blurDataUrls = await getBlurDataUrls([...PROJECT_IMAGE_URLS]);
   return (
     <main id="main-content" className="min-h-screen bg-white dark:bg-slate-900" role="main">
-      <Hero />
+      <ScrollSequence />
       <Section spacing="lg">
         <Container maxWidth="lg" className="space-y-12">
           <div id="about" className="scroll-mt-24">
