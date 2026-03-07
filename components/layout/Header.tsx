@@ -8,7 +8,7 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { useActiveSection, type SectionId } from "@/hooks/useActiveSection";
 
-const SECTION_IDS: SectionId[] = ["about", "work", "services", "contact"];
+const SECTION_IDS: SectionId[] = ["about", "work", "services", "design-showcase", "contact"];
 
 function smoothScrollTo(href: string) {
   const id = href.replace("#", "");
@@ -36,6 +36,7 @@ export function Header() {
     { label: t("about"), href: "#about", id: "about" as SectionId },
     { label: t("work"), href: "#work", id: "work" as SectionId },
     { label: t("services"), href: "#services", id: "services" as SectionId },
+    { label: t("designs"), href: "#design-showcase", id: "design-showcase" as SectionId },
     { label: t("contact"), href: "#contact", id: "contact" as SectionId },
   ];
 

@@ -3,15 +3,16 @@
 import { useRef, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { BlurImage } from "@/components/ui/BlurImage";
+import { Link } from "@/i18n/navigation";
 
 const FALLBACK_BLUR =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
-export type ProjectCategory = "website" | "ai" | "feature";
+export type ProjectCategory = "website" | "landing" | "ai";
 export type BentoSize = "1x1" | "1x2" | "2x1" | "2x2";
 
 export interface Project {
@@ -24,19 +25,19 @@ export interface Project {
 }
 
 const PROJECTS: Project[] = [
-  { id: "1", category: "website", image: "https://picsum.photos/seed/project1/800/800", link: "#", size: "2x2", featured: true },
+  { id: "1", category: "website", image: "https://picsum.photos/seed/project1/800/800", link: "#", size: "1x1" },
   { id: "2", category: "website", image: "https://picsum.photos/seed/project2/600/450", link: "#", size: "1x1" },
-  { id: "3", category: "ai", image: "https://picsum.photos/seed/project3/600/450", link: "#", size: "1x1" },
+  { id: "3", category: "ai", image: "https://picsum.photos/seed/project3/600/450", link: "/demo/chatbot", size: "2x2", featured: true },
   { id: "4", category: "ai", image: "https://picsum.photos/seed/project4/600/450", link: "#", size: "1x2" },
-  { id: "5", category: "feature", image: "https://picsum.photos/seed/project5/600/450", link: "#", size: "2x1" },
-  { id: "6", category: "feature", image: "https://picsum.photos/seed/project6/600/450", link: "#", size: "1x1" },
+  { id: "5", category: "landing", image: "https://picsum.photos/seed/project5/600/450", link: "#", size: "2x1" },
+  { id: "6", category: "landing", image: "https://picsum.photos/seed/project6/600/450", link: "#", size: "1x1" },
 ];
 
 const FILTER_KEYS: { value: "all" | ProjectCategory; key: string }[] = [
   { value: "all", key: "filterAll" },
   { value: "website", key: "filterWebsites" },
+  { value: "landing", key: "filterLanding" },
   { value: "ai", key: "filterAI" },
-  { value: "feature", key: "filterFeatures" },
 ];
 
 const cardExit = { opacity: 0, scale: 0.95, transition: { duration: 0.25 } };
@@ -56,7 +57,7 @@ function BentoCard({
   description,
   tags,
   categoryLabel,
-  viewProject,
+  viewProjectLabel,
   blurDataURL,
 }: {
   project: Project;
@@ -66,11 +67,92 @@ function BentoCard({
   description: string;
   tags: string[];
   categoryLabel: string;
-  viewProject: string;
+  viewProjectLabel: string;
   blurDataURL: string;
 }) {
   const size = project.size;
   const isLarge = size === "2x2";
+  const isInternal = project.link.startsWith("/");
+  const linkClassName = "block absolute inset-0 h-full w-full";
+
+  const cardContent = (
+    <>
+      <div className="absolute inset-0">
+        <BlurImage
+          src={project.image}
+          alt=""
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          blurDataURL={blurDataURL}
+          loading="lazy"
+          className={cn(
+            "object-cover",
+            "group-hover:blur-[2px] group-hover:brightness-75 group-hover:scale-105",
+            "transition-all duration-400 ease-out"
+          )}
+        />
+      </div>
+
+      {/* Overlay: always visible for large, on hover for others */}
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent",
+          "p-4 md:p-5 lg:p-6 flex flex-col justify-end",
+          isLarge
+            ? "opacity-100"
+            : "opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out"
+        )}
+      >
+        <h3
+          className={cn(
+            "font-bold text-white mb-1 md:mb-2",
+            isLarge ? "text-xl md:text-2xl" : "text-lg md:text-xl"
+          )}
+        >
+          {title}
+        </h3>
+        <p
+          className={cn(
+            "text-gray-300 mb-2 md:mb-3",
+            isLarge ? "text-sm md:text-base line-clamp-3" : "text-sm line-clamp-2"
+          )}
+        >
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-2 md:mb-3">
+          {tags.slice(0, isLarge ? undefined : 3).map((tag) => (
+            <span
+              key={tag}
+              title={tag}
+              className="text-xs px-2 py-0.5 md:py-1 rounded-full bg-white/20 text-white cursor-pointer inline-block hover:bg-white/35 transition-colors duration-200"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <span
+          className={cn(
+            "inline-flex items-center gap-2 font-medium text-white/90 group-hover:text-white transition-colors duration-300",
+            isLarge
+              ? "text-base md:text-lg px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 mt-1 w-fit"
+              : "text-sm"
+          )}
+        >
+          {viewProjectLabel}
+          <ArrowRight className={cn("transition-transform duration-300 group-hover:translate-x-0.5", isLarge ? "w-5 h-5" : "w-4 h-4")} />
+        </span>
+      </div>
+
+      <span
+        className={cn(
+          "absolute top-3 right-3 md:top-4 md:right-4 text-xs font-medium px-2 py-0.5 md:px-3 md:py-1 rounded-full",
+          "backdrop-blur-md bg-white/10 text-white"
+        )}
+      >
+        {categoryLabel}
+      </span>
+    </>
+  );
 
   return (
     <motion.article
@@ -100,82 +182,15 @@ function BentoCard({
       )}
     >
       <MagneticButton className="absolute inset-0 block h-full w-full">
-        <a href={project.link} className="block absolute inset-0 h-full w-full" aria-label={title}>
-          <div className="absolute inset-0">
-            <BlurImage
-              src={project.image}
-              alt=""
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              blurDataURL={blurDataURL}
-              loading="lazy"
-              className={cn(
-                "object-cover",
-                "group-hover:blur-[2px] group-hover:brightness-75 group-hover:scale-105",
-                "transition-all duration-400 ease-out"
-              )}
-            />
-          </div>
-
-          {/* Overlay: always visible for large, on hover for others */}
-          <div
-            className={cn(
-              "absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent",
-              "p-4 md:p-5 lg:p-6 flex flex-col justify-end",
-              isLarge
-                ? "opacity-100"
-                : "opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out"
-            )}
-          >
-            <h3
-              className={cn(
-                "font-bold text-white mb-1 md:mb-2",
-                isLarge ? "text-xl md:text-2xl" : "text-lg md:text-xl"
-              )}
-            >
-              {title}
-            </h3>
-            <p
-              className={cn(
-                "text-gray-300 mb-2 md:mb-3",
-                isLarge ? "text-sm md:text-base line-clamp-3" : "text-sm line-clamp-2"
-              )}
-            >
-              {description}
-            </p>
-            <div className="flex flex-wrap gap-1.5 md:gap-2 mb-2 md:mb-3">
-              {tags.slice(0, isLarge ? undefined : 3).map((tag) => (
-                <span
-                  key={tag}
-                  title={tag}
-                  className="text-xs px-2 py-0.5 md:py-1 rounded-full bg-white/20 text-white cursor-pointer inline-block hover:bg-white/35 transition-colors duration-200"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <span
-              className={cn(
-                "inline-flex items-center gap-2 font-medium text-white/90 group-hover:text-white transition-colors duration-300",
-                isLarge
-                  ? "text-base md:text-lg px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 mt-1 w-fit"
-                  : "text-sm"
-              )}
-            >
-              {viewProject}
-              <ArrowRight className={cn("transition-transform duration-300 group-hover:translate-x-0.5", isLarge ? "w-5 h-5" : "w-4 h-4")} />
-            </span>
-          </div>
-
-          <span
-            className={cn(
-              "absolute top-3 right-3 md:top-4 md:right-4 text-xs font-medium px-2 py-0.5 md:px-3 md:py-1 rounded-full",
-              "backdrop-blur-md bg-white/10 text-white"
-            )}
-          >
-            {categoryLabel}
-          </span>
-        </a>
+        {isInternal ? (
+          <Link href={project.link} className={linkClassName} aria-label={title}>
+            {cardContent}
+          </Link>
+        ) : (
+          <a href={project.link} className={linkClassName} aria-label={title}>
+            {cardContent}
+          </a>
+        )}
       </MagneticButton>
     </motion.article>
   );
@@ -183,8 +198,8 @@ function BentoCard({
 
 const CATEGORY_KEYS: Record<ProjectCategory, string> = {
   website: "categoryWebsite",
+  landing: "categoryLanding",
   ai: "categoryAI",
-  feature: "categoryFeature",
 };
 
 export function Projects({
@@ -228,9 +243,29 @@ export function Projects({
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
             {t("title")}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-12">
+          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
             {t("subtitle")}
           </p>
+
+          <div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-blue-200/60 dark:border-blue-800/60 bg-blue-50/80 dark:bg-slate-900/80 px-4 py-3 md:px-5 md:py-4">
+            <Sparkles className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden />
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-300">
+              {t("aiSpotlight")}
+            </p>
+            <MagneticButton>
+              <button
+                type="button"
+                onClick={() => setFilter("ai")}
+                className={cn(
+                  "shrink-0 text-sm font-medium px-4 py-2 rounded-full",
+                  "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600",
+                  "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                )}
+              >
+                {t("seeAIProjects")}
+              </button>
+            </MagneticButton>
+          </div>
 
           <div className="flex flex-wrap gap-2" role="tablist" aria-label={t("filterLabel")}>
             {FILTER_KEYS.map(({ value, key }) => (
@@ -273,7 +308,7 @@ export function Projects({
                 description={t(`items.${project.id}.description`)}
                 tags={t(`items.${project.id}.tags`).split(", ")}
                 categoryLabel={t(CATEGORY_KEYS[project.category])}
-                viewProject={t("viewProject")}
+                viewProjectLabel={project.link.includes("/demo/") ? t("tryDemo") : t("viewProject")}
                 blurDataURL={blurDataUrls[project.image] ?? FALLBACK_BLUR}
               />
             ))}

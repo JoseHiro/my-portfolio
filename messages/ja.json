@@ -4,6 +4,7 @@
     "about": "について",
     "work": "実績",
     "services": "サービス",
+    "designs": "デザイン",
     "contact": "お問い合わせ",
     "themeLight": "ライト",
     "themeDark": "ダーク"
@@ -12,7 +13,7 @@
     "badge": "デザイン & 開発",
     "headline1": "デジタル体験を",
     "headline2": "創造する",
-    "subtitle": "モダンなウェブサイト、AI製品、カスタム機能で、ビジネスの成長をサポートします。",
+    "subtitle": "ウェブサイト、ランディングページ、AIプロジェクトを提供。シンプルな1ページからWebアプリ・チャットボットまで対応します。",
     "cta": "実績を見る"
   },
   "about": {
@@ -28,15 +29,15 @@
       "description": "モダンなフレームワークでフルスタックWebアプリを構築。ランディングページから複雑なWebプラットフォームまで、高速でレスポンシブ、スケーラブルなソリューションを提供します。",
       "tags": "React, Next.js, TypeScript, Tailwind"
     },
+    "landing": {
+      "title": "ランディングページ",
+      "description": "コンバージョン重視の1ページ・キャンペーンページ。製品・リリース・リード獲得に合わせたデザインとCTAで構成します。",
+      "tags": "Next.js, Tailwind, フォーム, SEO"
+    },
     "ai": {
-      "title": "AI製品",
+      "title": "AIプロジェクト",
       "description": "ユーザー体験を高めるカスタムチャットボットやAI連携。最新の言語モデルとAI技術でインテリジェントな機能を実装します。",
       "tags": "OpenAI, LangChain, RAG, APIs"
-    },
-    "feature": {
-      "title": "機能拡張",
-      "description": "既存サイトに新機能を追加。認証、決済、分析、カスタム機能など、幅広く対応します。",
-      "tags": "Stripe, Auth, Analytics, APIs"
     }
   },
   "techStack": {
@@ -49,6 +50,63 @@
     "copy": "コピー",
     "copied": "コピーしました",
     "copyLabel": "コードをコピー"
+  },
+  "designShowcase": {
+    "overline": "デザイン",
+    "title": "Website Designs for Every Business",
+    "subtitle": "業種に合わせたプロフェッショナルでモダンなウェブサイト",
+    "viewDemo": "デモを見る",
+    "backToShowcase": "ショーケースに戻る",
+    "items": {
+      "freelancer": {
+        "title": "フリーランス / 個人ブランド",
+        "templateName": "Dev Portfolio Pro",
+        "industry": "デザイナー、開発者、コンサルタント、コーチ向け。",
+        "badge": "Freelancer"
+      },
+      "hairSalon": {
+        "title": "ヘアサロン / ビューティー",
+        "templateName": "Salon Luxe",
+        "industry": "サロン、スパ、ビューティースタジオ向け。",
+        "badge": "Hair Salon"
+      },
+      "restaurant": {
+        "title": "レストラン / カフェ",
+        "templateName": "Bistro Modern",
+        "industry": "レストラン、カフェ、バー、フードトラック向け。",
+        "badge": "Restaurant"
+      },
+      "smallBusiness": {
+        "title": "中小企業 / 地域会社",
+        "templateName": "Local Pro",
+        "industry": "配管、電気、工事、地域サービス向け。",
+        "badge": "Local Business"
+      },
+      "ecommerce": {
+        "title": "EC / オンラインストア",
+        "templateName": "Shop Boutique",
+        "industry": "小規模ネットショップ、ブティック、物販向け。",
+        "badge": "E-commerce"
+      },
+      "saas": {
+        "title": "SaaS / テックスタートアップ",
+        "templateName": "SaaS Launch",
+        "industry": "ソフトウェア、アプリ、テック製品向け。",
+        "badge": "SaaS"
+      },
+      "creativeAgency": {
+        "title": "クリエイティブエージェンシー",
+        "templateName": "Studio Bold",
+        "industry": "デザイン会社、マーケティング、スタジオ向け。",
+        "badge": "Agency"
+      },
+      "medical": {
+        "title": "医療 / ヘルスケア",
+        "templateName": "Wellness Clinic",
+        "industry": "医院、歯科、クリニック、セラピスト向け。",
+        "badge": "Healthcare"
+      }
+    }
   },
   "testimonials": {
     "overline": "お客様の声",
@@ -88,6 +146,19 @@
       }
     }
   },
+  "demo": {
+    "chatbot": {
+      "title": "サポートチャットボット デモ",
+      "backToWork": "ポートフォリオに戻る",
+      "subtitle": "AIサポートボットのプレビューです。実際の案件ではお客様のナレッジベースやAPIと連携します。",
+      "placeholder": "メッセージを入力…",
+      "send": "送信",
+      "botGreeting": "こんにちは。デモ用サポートボットです。実際の導入では、ドキュメントやツールを使って回答します。",
+      "userExample": "パスワードのリセット方法は？",
+      "botReply": "本番環境ではヘルプを検索してここに返答します。このデモはUIのみ。バックエンドはRAGとAPIで構築します。",
+      "demoNotice": "デモ用UI — ライブチャットはAPI連携で有効になります"
+    }
+  },
   "projects": {
     "overline": "ポートフォリオ",
     "title": "Featured Work",
@@ -95,12 +166,15 @@
     "filterLabel": "カテゴリでフィルター",
     "filterAll": "すべて",
     "filterWebsites": "ウェブサイト",
-    "filterAI": "AI製品",
-    "filterFeatures": "機能",
+    "filterLanding": "ランディング",
+    "filterAI": "AIプロジェクト",
     "viewProject": "プロジェクトを見る",
+    "tryDemo": "デモを試す",
+    "aiSpotlight": "AIチャットボット、RAG、自動化を手がけています。下の「AI製品」で絞り込めます。",
+    "seeAIProjects": "AIプロジェクトを見る",
     "categoryWebsite": "Website",
+    "categoryLanding": "Landing",
     "categoryAI": "AI",
-    "categoryFeature": "Feature",
     "items": {
       "1": {
         "title": "Eコマースプラットフォーム",
@@ -123,14 +197,14 @@
         "tags": "GPT-4, RAG, TypeScript"
       },
       "5": {
-        "title": "決済連携",
-        "description": "既存SaaS向けのStripeチェックアウトとサブスクリプション課金。",
-        "tags": "Stripe, Webhooks, React"
+        "title": "プロダクトローンチページ",
+        "description": "サインアップ・ウェイトリスト付きの製品ローンチ用1ページ。",
+        "tags": "Next.js, Tailwind, フォーム"
       },
       "6": {
-        "title": "分析ダッシュボード",
-        "description": "チャートとエクスポート付きのリアルタイムメトリクス・レポート。",
-        "tags": "Chart.js, API, Next.js"
+        "title": "SaaSランディング",
+        "description": "料金・CTAセクション付きのコンバージョン重視ランディングページ。",
+        "tags": "React, レスポンシブ, SEO"
       }
     }
   },
@@ -171,6 +245,7 @@
       "work": "実績",
       "projects": "プロジェクト",
       "services": "サービス",
+      "designs": "デザイン",
       "contact": "お問い合わせ"
     },
     "groups": {

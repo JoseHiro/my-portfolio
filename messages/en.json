@@ -4,6 +4,7 @@
     "about": "About",
     "work": "Work",
     "services": "Services",
+    "designs": "Designs",
     "contact": "Contact",
     "themeLight": "Light",
     "themeDark": "Dark"
@@ -12,7 +13,7 @@
     "badge": "Design & Development",
     "headline1": "Building Digital",
     "headline2": "Experiences",
-    "subtitle": "I create modern websites, AI-powered products, and custom features that help businesses grow.",
+    "subtitle": "I offer websites, landing pages, and AI projects for clients — from simple one-pagers to full web apps and chatbots.",
     "cta": "View My Work"
   },
   "about": {
@@ -28,15 +29,15 @@
       "description": "Full-stack web applications built with modern frameworks. From landing pages to complex web platforms, I create fast, responsive, and scalable solutions.",
       "tags": "React, Next.js, TypeScript, Tailwind"
     },
+    "landing": {
+      "title": "Landing Pages",
+      "description": "Conversion-focused one-pagers and campaign pages. Clean design, fast load, and clear CTAs tailored to your product, launch, or lead capture.",
+      "tags": "Next.js, Tailwind, Forms, SEO"
+    },
     "ai": {
-      "title": "AI-Powered Products",
+      "title": "AI Projects",
       "description": "Custom chatbots and AI integrations that enhance user experience. Implement intelligent features using the latest language models and AI technologies.",
       "tags": "OpenAI, LangChain, RAG, APIs"
-    },
-    "feature": {
-      "title": "Feature Enhancement",
-      "description": "Add new capabilities to your existing websites. Whether it's authentication, payments, analytics, or custom functionality - I've got you covered.",
-      "tags": "Stripe, Auth, Analytics, APIs"
     }
   },
   "techStack": {
@@ -49,6 +50,63 @@
     "copy": "Copy",
     "copied": "Copied!",
     "copyLabel": "Copy code"
+  },
+  "designShowcase": {
+    "overline": "Designs",
+    "title": "Website Designs for Every Business",
+    "subtitle": "Professional, modern websites tailored to your industry",
+    "viewDemo": "View Live Demo",
+    "backToShowcase": "Back to Showcase",
+    "items": {
+      "freelancer": {
+        "title": "Freelancer / Personal Brand",
+        "templateName": "Dev Portfolio Pro",
+        "industry": "Perfect for designers, developers, consultants, and coaches.",
+        "badge": "Freelancer"
+      },
+      "hairSalon": {
+        "title": "Hair Salon / Beauty Studio",
+        "templateName": "Salon Luxe",
+        "industry": "Perfect for salons, spas, and beauty studios.",
+        "badge": "Hair Salon"
+      },
+      "restaurant": {
+        "title": "Restaurant / Café",
+        "templateName": "Bistro Modern",
+        "industry": "Perfect for restaurants, cafés, bars, and food trucks.",
+        "badge": "Restaurant"
+      },
+      "smallBusiness": {
+        "title": "Small Business / Local Company",
+        "templateName": "Local Pro",
+        "industry": "Perfect for plumbers, electricians, contractors, and local services.",
+        "badge": "Local Business"
+      },
+      "ecommerce": {
+        "title": "E-commerce / Online Store",
+        "templateName": "Shop Boutique",
+        "industry": "Perfect for small online shops, boutiques, and product sellers.",
+        "badge": "E-commerce"
+      },
+      "saas": {
+        "title": "SaaS / Tech Startup",
+        "templateName": "SaaS Launch",
+        "industry": "Perfect for software companies, apps, and tech products.",
+        "badge": "SaaS"
+      },
+      "creativeAgency": {
+        "title": "Creative Agency / Studio",
+        "templateName": "Studio Bold",
+        "industry": "Perfect for design agencies, marketing firms, and studios.",
+        "badge": "Agency"
+      },
+      "medical": {
+        "title": "Medical / Healthcare Practice",
+        "templateName": "Wellness Clinic",
+        "industry": "Perfect for doctors, dentists, clinics, and therapists.",
+        "badge": "Healthcare"
+      }
+    }
   },
   "testimonials": {
     "overline": "Testimonials",
@@ -88,6 +146,19 @@
       }
     }
   },
+  "demo": {
+    "chatbot": {
+      "title": "Support Chatbot Demo",
+      "backToWork": "Back to Portfolio",
+      "subtitle": "A preview of an AI-powered support bot. In a real project, this connects to your knowledge base and APIs.",
+      "placeholder": "Type a message…",
+      "send": "Send",
+      "botGreeting": "Hi! I'm a demo support bot. Ask me anything — in a real integration I'd use your docs and tools to help.",
+      "userExample": "How do I reset my password?",
+      "botReply": "In a live deployment I'd look up your help docs and reply here. This demo shows the UI; the backend would use RAG + your API.",
+      "demoNotice": "Demo UI — connect your API to enable live chat"
+    }
+  },
   "projects": {
     "overline": "Portfolio",
     "title": "Featured Work",
@@ -95,12 +166,15 @@
     "filterLabel": "Filter projects by category",
     "filterAll": "All",
     "filterWebsites": "Websites",
-    "filterAI": "AI Products",
-    "filterFeatures": "Features",
+    "filterLanding": "Landing Pages",
+    "filterAI": "AI Projects",
     "viewProject": "View Project",
+    "tryDemo": "Try demo",
+    "aiSpotlight": "I build AI chatbots, RAG pipelines, and automation — filter by AI below to see them.",
+    "seeAIProjects": "See AI projects",
     "categoryWebsite": "Website",
+    "categoryLanding": "Landing",
     "categoryAI": "AI",
-    "categoryFeature": "Feature",
     "items": {
       "1": {
         "title": "E-Commerce Platform",
@@ -123,14 +197,14 @@
         "tags": "GPT-4, RAG, TypeScript"
       },
       "5": {
-        "title": "Payment Integration",
-        "description": "Stripe checkout and subscription billing for an existing SaaS.",
-        "tags": "Stripe, Webhooks, React"
+        "title": "Product Launch Page",
+        "description": "Single-page campaign for a product launch with signup and waitlist.",
+        "tags": "Next.js, Tailwind, Forms"
       },
       "6": {
-        "title": "Analytics Dashboard",
-        "description": "Real-time metrics and reporting with charts and exports.",
-        "tags": "Chart.js, API, Next.js"
+        "title": "SaaS Landing",
+        "description": "Conversion-focused landing page with pricing and CTA sections.",
+        "tags": "React, Responsive, SEO"
       }
     }
   },
@@ -171,6 +245,7 @@
       "work": "Work",
       "projects": "Projects",
       "services": "Services",
+      "designs": "Designs",
       "contact": "Contact"
     },
     "groups": {

@@ -3,11 +3,11 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
-import { Globe, Sparkles, Zap } from "lucide-react";
+import { Globe, LayoutTemplate, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const SERVICE_KEYS = ["website", "ai", "feature"] as const;
-const ICONS = [Globe, Sparkles, Zap] as const;
+const SERVICE_KEYS = ["website", "landing", "ai"] as const;
+const ICONS = [Globe, LayoutTemplate, Sparkles] as const;
 
 const container = {
   hidden: { opacity: 0 },

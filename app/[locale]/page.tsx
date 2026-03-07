@@ -10,16 +10,22 @@ const Projects = dynamic(
   () => import("@/components/sections/Projects").then((m) => ({ default: m.Projects })),
   { ssr: true, loading: () => <SectionSkeleton /> }
 );
-const TechStack = dynamic(
-  () => import("@/components/sections/TechStack").then((m) => ({ default: m.TechStack })),
-  { ssr: true }
-);
+// Optional: tech marquee — uncomment to show "Technologies I Use"
+// const TechStack = dynamic(
+//   () => import("@/components/sections/TechStack").then((m) => ({ default: m.TechStack })),
+//   { ssr: true }
+// );
 const Services = dynamic(
   () => import("@/components/sections/Services").then((m) => ({ default: m.Services })),
   { ssr: true, loading: () => <SectionSkeleton /> }
 );
-const CodeShowcase = dynamic(
-  () => import("@/components/sections/CodeShowcase").then((m) => ({ default: m.CodeShowcase })),
+// Optional: code snippets — uncomment to show "How I Code"
+// const CodeShowcase = dynamic(
+//   () => import("@/components/sections/CodeShowcase").then((m) => ({ default: m.CodeShowcase })),
+//   { ssr: true }
+// );
+const DesignShowcase = dynamic(
+  () => import("@/components/sections/DesignShowcase").then((m) => ({ default: m.DesignShowcase })),
   { ssr: true }
 );
 const Testimonials = dynamic(
@@ -50,11 +56,13 @@ export default async function HomePage() {
 
       <Projects blurDataUrls={blurDataUrls} />
 
-      <TechStack />
+      {/* <TechStack /> */}
 
       <Services />
 
-      <CodeShowcase />
+      {/* <CodeShowcase /> */}
+
+      <DesignShowcase />
 
       <Testimonials />
 
