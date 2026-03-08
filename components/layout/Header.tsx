@@ -8,7 +8,7 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { useActiveSection, type SectionId } from "@/hooks/useActiveSection";
 
-const SECTION_IDS: SectionId[] = ["about", "work", "services", "design-showcase", "contact"];
+const SECTION_IDS: SectionId[] = ["work", "services", "contact"];
 
 function smoothScrollTo(href: string) {
   const id = href.replace("#", "");
@@ -23,20 +23,10 @@ export function Header() {
   const activeSection = useActiveSection(100);
   const { scrollY } = useScroll();
   const headerHeight = useTransform(scrollY, [0, 80], [64, 56]);
-  const boxShadow = useTransform(
-    scrollY,
-    [0, 80],
-    [
-      "0 0 0 rgba(0,0,0,0)",
-      "0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06)",
-    ]
-  );
 
   const navLinks = [
-    { label: t("about"), href: "#about", id: "about" as SectionId },
     { label: t("work"), href: "#work", id: "work" as SectionId },
     { label: t("services"), href: "#services", id: "services" as SectionId },
-    { label: t("designs"), href: "#design-showcase", id: "design-showcase" as SectionId },
     { label: t("contact"), href: "#contact", id: "contact" as SectionId },
   ];
 
@@ -44,15 +34,11 @@ export function Header() {
 
   return (
     <motion.header
-      style={{
-        height: headerHeight,
-        boxShadow,
-      }}
+      style={{ height: headerHeight }}
       className={cn(
         "sticky top-0 z-50 flex w-full items-center justify-between",
-        "border-b border-gray-200 dark:border-gray-800",
         "bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg",
-        "px-6 md:px-12 transition-[background-color,border-color] duration-150"
+        "px-6 md:px-12 transition-[background-color] duration-150"
       )}
     >
       <a

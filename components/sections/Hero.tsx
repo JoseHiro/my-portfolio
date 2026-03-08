@@ -106,10 +106,10 @@ export function Hero() {
       <ImageStack heroRef={heroRef} />
 
       <motion.a
-        href="#about"
+        href="#services"
         onClick={(e) => {
           e.preventDefault();
-          document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+          document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

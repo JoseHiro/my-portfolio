@@ -1,50 +1,38 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const LOCALES = [
-  { code: "en" as const, label: "EN" },
-  { code: "ja" as const, label: "JP" },
-] as const;
 
 export function LanguageToggle() {
   const locale = useLocale();
+  const t = useTranslations("commandPalette.actions");
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleSwitch = (nextLocale: "en" | "ja") => {
-    if (nextLocale === locale) return;
+  const nextLocale = locale === "en" ? "ja" : "en";
+  const handleToggle = () => {
     router.replace(pathname, { locale: nextLocale });
   };
 
+  const ariaLabel = locale === "en" ? t("switchJa") : t("switchEn");
+
   return (
-    <div className="flex items-center gap-0 text-sm">
-      {LOCALES.map(({ code, label }, i) => (
-        <span key={code} className="flex items-center gap-0">
-          {i > 0 && (
-            <span className="px-1 text-gray-300 dark:text-gray-600">|</span>
-          )}
-          <button
-            type="button"
-            onClick={() => handleSwitch(code)}
-            className={cn(
-              "min-h-[44px] min-w-[44px] h-10 px-3 rounded-md font-medium transition-all duration-150 ease-out flex items-center justify-center",
-              "text-gray-700 dark:text-gray-300",
-              "hover:bg-slate-100 dark:hover:bg-slate-800",
-              "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
-              locale === code
-                ? "font-bold text-blue-600 dark:text-blue-400"
-                : "text-gray-600 dark:text-gray-500"
-            )}
-            aria-label={locale === code ? `Current language: ${label}` : `Switch to ${label}`}
-            aria-current={locale === code ? "true" : undefined}
-          >
-            {label}
-          </button>
-        </span>
-      ))}
-    </div>
+    <button
+      type="button"
+      onClick={handleToggle}
+      className={cn(
+        "flex h-10 w-10 items-center justify-center rounded-md transition-colors duration-150 ease-out",
+        "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white",
+        "hover:bg-slate-100 dark:hover:bg-slate-800",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      )}
+      aria-label={ariaLabel}
+      title={ariaLabel}
+    >
+      <Languages className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+    </button>
   );
 }

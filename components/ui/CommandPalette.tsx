@@ -147,21 +147,6 @@ export function CommandPalette() {
                 {t("nav.home")}
               </CommandItem>
               <CommandItem
-                value={t("nav.about")}
-                keywords={["about"]}
-                onSelect={() => {
-                  scrollToSection("about");
-                  setOpen(false);
-                }}
-                className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm cursor-pointer",
-                  "aria-selected:bg-slate-100 dark:aria-selected:bg-slate-800"
-                )}
-              >
-                <User className="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" />
-                {t("nav.about")}
-              </CommandItem>
-              <CommandItem
                 value={t("nav.work")}
                 keywords={[t("nav.projects"), "work", "projects"]}
                 onSelect={() => {
@@ -189,21 +174,6 @@ export function CommandPalette() {
               >
                 <Wrench className="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" />
                 {t("nav.services")}
-              </CommandItem>
-              <CommandItem
-                value={t("nav.designs")}
-                keywords={["designs", "showcase", "templates"]}
-                onSelect={() => {
-                  scrollToSection("design-showcase");
-                  setOpen(false);
-                }}
-                className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm cursor-pointer",
-                  "aria-selected:bg-slate-100 dark:aria-selected:bg-slate-800"
-                )}
-              >
-                <FolderOpen className="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" />
-                {t("nav.designs")}
               </CommandItem>
               <CommandItem
                 value={t("nav.contact")}

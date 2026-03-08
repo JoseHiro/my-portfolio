@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const SECTION_IDS = ["about", "work", "services", "design-showcase", "contact"] as const;
+const SECTION_IDS = ["work", "services", "contact"] as const;
 export type SectionId = (typeof SECTION_IDS)[number];
 
 export function useActiveSection(offset = 120): SectionId | null {
@@ -18,8 +18,8 @@ export function useActiveSection(offset = 120): SectionId | null {
           current = id;
         }
       }
-      // When at top of page, highlight About
-      if (!current && window.scrollY < 400) current = "about";
+      // When at top of page, highlight Work
+      if (!current && window.scrollY < 400) current = "work";
       setActive(current);
     };
 
