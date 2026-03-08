@@ -64,8 +64,16 @@ export function Services() {
           animate={isInView ? "visible" : "hidden"}
           className="text-center mb-16"
         >
+          <div className="flex justify-center mb-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/IMG_8886.webp"
+              alt=""
+              className="rounded-2xl object-cover w-full max-w-sm md:max-w-md aspect-[4/3]"
+            />
+          </div>
           <motion.span
-            variants={headerItem(0)}
+            variants={headerItem(0.05)}
             className={cn(
               "block text-sm font-medium uppercase tracking-widest mb-3",
               "text-blue-600 dark:text-blue-400"
@@ -74,13 +82,13 @@ export function Services() {
             {t("overline")}
           </motion.span>
           <motion.h2
-            variants={headerItem(0.05)}
+            variants={headerItem(0.1)}
             className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
           >
             {t("title")}
           </motion.h2>
           <motion.p
-            variants={headerItem(0.1)}
+            variants={headerItem(0.15)}
             className="text-xl text-gray-600 dark:text-gray-400"
           >
             {t("subtitle")}
