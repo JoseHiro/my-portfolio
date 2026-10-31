@@ -1,7 +1,7 @@
 (() => {
 const base=new URL('.',document.currentScript.src),asset=name=>new URL('../img/apps/'+name,base).href,link=slug=>new URL('apps/'+slug+'.html',base).href;
 const grid=document.querySelector('.work-grid');grid.querySelector('[data-sample]')?.remove();
-const tiles=[...IOS_PROJECTS].reverse().map(p=>{const a=document.createElement('a');a.className='work-tile ios-tile';a.dataset.kind='ios';a.href=link(p.slug);a.innerHTML=(p.cover?`<img src="${asset(p.cover)}" alt="${p.name}">`:'<div class="placeholder">歴</div>')+`<b>${p.name} ↗</b><span></span>`;grid.prepend(a);return [a,p]});
+const tiles=[...IOS_PROJECTS].reverse().map(p=>{const a=document.createElement('a');a.className='work-tile ios-tile';a.dataset.kind='ios';a.href=link(p.slug);a.innerHTML=(p.cover?`<img class="${p.frame==='simulator-crop'?'captured-ui':''}" src="${asset(p.cover)}" alt="${p.name}">`:'<div class="placeholder">歴</div>')+`<b>${p.name} ↗</b><span></span>`;grid.prepend(a);return [a,p]});
 const ios=document.querySelector('#ios');ios.querySelector('h2').innerHTML='Mi Ciudadita<span class="serif" style="display:block;font-size:.7em">A tiny city.<br>A daily delight.</span>';
 ios.querySelector('.art').innerHTML=`<a href="${link('mi-ciudadita')}" class="real-phone"><img src="${asset('mi-ciudadita-1.webp')}" alt="Mi Ciudadita — Today"></a>`;
 const cta=ios.querySelector('[data-sample]'),newCta=document.createElement('a');newCta.className=cta.className;newCta.href=link('mi-ciudadita');cta.replaceWith(newCta);

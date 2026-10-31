@@ -62,6 +62,7 @@ window.IOS_PROJECTS = [
   },
   {
     "slug": "cuotify",
+    "frame": "simulator-crop",
     "name": "Cuotify",
     "icon": "cuotify-icon.webp",
     "cover": "cuotify-home.webp",
@@ -108,6 +109,7 @@ window.IOS_PROJECTS = [
   },
   {
     "slug": "peekpaw",
+    "frame": "simulator-crop",
     "name": "Peekpaw",
     "icon": "peekpaw-icon.webp",
     "cover": "peekpaw-welcome.webp",
@@ -165,6 +167,7 @@ window.IOS_PROJECTS = [
   },
   {
     "slug": "rekishi",
+    "frame": "simulator-crop",
     "name": "Rekishi",
     "icon": null,
     "cover": "rekishi-home.webp",
@@ -216,6 +219,7 @@ window.IOS_PROJECTS = [
   },
   {
     "slug": "driftly",
+    "frame": "simulator-crop",
     "name": "Driftly",
     "icon": "driftly-icon.webp",
     "cover": "driftly-setup.webp",
