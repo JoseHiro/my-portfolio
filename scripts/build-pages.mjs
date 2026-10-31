@@ -19,6 +19,6 @@ async function fixPaths(directory) {
 }
 await fixPaths(path.join(output,'design-lab'));
 const horizontal = await readFile(path.join(output, 'design-lab/horizontal.html'), 'utf8');
-await writeFile(path.join(output, 'index.html'), horizontal.replace('href="index.html#3"', 'href="design-lab/index.html#3"').replace('src="projects.js"', 'src="design-lab/projects.js"').replace('src="catalog.js"', 'src="design-lab/catalog.js"'));
+await writeFile(path.join(output, 'index.html'), horizontal.replace('href="index.html#3"', 'href="design-lab/index.html#3"').replace('src="projects.js', 'src="design-lab/projects.js').replace('src="catalog.js"', 'src="design-lab/catalog.js"'));
 await writeFile(path.join(output, '.nojekyll'), '');
 console.log(`GitHub Pages site prepared at ${output} (base: ${base})`);

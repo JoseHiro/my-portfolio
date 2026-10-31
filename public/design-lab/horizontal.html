@@ -68,4 +68,4 @@ function localizeTree(root){const walker=document.createTreeWalker(root,NodeFilt
 function setLanguage(next){language=next;document.documentElement.lang=next;localizeTree(document.body);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===next)));const still=document.body.classList.contains('still');document.querySelector('.motion-toggle').textContent=next==='en'?(still?'Resume motion':'Pause motion'):(still?'動きを再開':'動きを止める');try{localStorage.setItem('josey-language',next)}catch{}window.dispatchEvent(new Event('portfolio-language'))}
 document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLanguage(b.dataset.lang));setLanguage(language);
 
-</script><script src="projects.js"></script><script src="catalog.js"></script></body></html>
+</script><script src="projects.js?v=20261031-ui2"></script><script src="catalog.js"></script></body></html>
